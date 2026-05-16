@@ -426,25 +426,38 @@ if (reviewForm) {
 renderReviews();
 
 // ── Gallery Swiper ────────────────────────────────────────────────────────
+const totalSlides = document.querySelectorAll('.gallery-slide').length;
+const progressFill = document.getElementById('gallery-progress-fill');
+
 const gallerySwiper = new Swiper('.gallery-swiper', {
   loop: true,
-  slidesPerView: 1,
-  spaceBetween: 0,
-  speed: 600,
+  centeredSlides: true,
+  slidesPerView: 1.4,
+  spaceBetween: 20,
+  speed: 800,
   autoplay: {
     delay: 3500,
     disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
   },
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
+  breakpoints: {
+    0:   { slidesPerView: 1,   spaceBetween: 0  },
+    768: { slidesPerView: 1.2, spaceBetween: 16 },
+    1024:{ slidesPerView: 1.4, spaceBetween: 20 },
+  },
+  on: {
+    slideChange: function () {
+      const progress = (this.realIndex + 1) / totalSlides * 100;
+      if (progressFill) progressFill.style.width = progress + '%';
+    },
+    init: function () {
+      if (progressFill) progressFill.style.width = (1 / totalSlides * 100) + '%';
+    }
+  }
 });
-
 
 //BackToTop
 const backToTopBtn = document.getElementById("backToTop");
