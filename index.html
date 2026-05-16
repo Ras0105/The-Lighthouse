@@ -29,6 +29,7 @@
         <li><a href="#about" class="nav-link" data-section="about">About</a></li>
         <li><a href="#menu" class="nav-link" data-section="menu">Menu</a></li>
         <li><a href="#reservation" class="nav-link" data-section="reservation">Reservations</a></li>
+        <li><a href="#occasions" class="nav-link" data-section="occasions">Occasions</a></li>
         <li><a href="#reviews" class="nav-link" data-section="reviews">Reviews</a></li>
         <li><a href="#location" class="nav-link" data-section="location">Location</a></li>
       </ul>
@@ -402,6 +403,113 @@
     </div>
   </section>
 
+
+<!-- Special Occasions Section -->
+<section class="occasions-section" id="occasions">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Celebrate With Us</span>
+      <h2 class="section-title">Special Occasions</h2>
+      <p class="section-subtitle">Make your special moments unforgettable at The Lighthouse</p>
+    </div>
+
+    <!-- Package Cards -->
+    <div class="occasions-grid">
+      <div class="occasion-card">
+        <div class="occasion-icon">👨‍👩‍👧‍👦</div>
+        <h3>Family Dinner</h3>
+        <p>Gather your loved ones for a warm, memorable evening. Perfect for reunions and celebrations with the whole family.</p>
+        <span class="occasion-price">From Rs.3,999</span>
+        <a href="#occasions-form" class="btn btn-outline occasion-btn">Inquire Now</a>
+      </div>
+      <div class="occasion-card">
+        <div class="occasion-icon">🕯️</div>
+        <h3>Couple Dinner</h3>
+        <p>An intimate candlelit evening crafted for two. Curated menu, ambient lighting, and a table just for you.</p>
+        <span class="occasion-price">From Rs.2,999</span>
+        <a href="#occasions-form" class="btn btn-outline occasion-btn">Inquire Now</a>
+      </div>
+      <div class="occasion-card">
+        <div class="occasion-icon">🎂</div>
+        <h3>Birthday Celebration</h3>
+        <p>Let us make your birthday truly special with a custom cake, decorations, and a dedicated celebration menu.</p>
+        <span class="occasion-price">From Rs.4,999</span>
+        <a href="#occasions-form" class="btn btn-outline occasion-btn">Inquire Now</a>
+      </div>
+      <div class="occasion-card">
+        <div class="occasion-icon">💍</div>
+        <h3>Anniversary Celebration</h3>
+        <p>Relive your love story over a romantic dinner. Flowers, champagne, and a personalised touch await you.</p>
+        <span class="occasion-price">From Rs.5,999</span>
+        <a href="#occasions-form" class="btn btn-outline occasion-btn">Inquire Now</a>
+      </div>
+      <div class="occasion-card">
+        <div class="occasion-icon">💼</div>
+        <h3>Corporate Dining</h3>
+        <p>Impress your clients and team with a refined dining experience. Private rooms and custom menus available.</p>
+        <span class="occasion-price">From Rs.8,999</span>
+        <a href="#occasions-form" class="btn btn-outline occasion-btn">Inquire Now</a>
+      </div>
+      <div class="occasion-card">
+        <div class="occasion-icon">✨</div>
+        <h3>Other Occasions</h3>
+        <p>Have something unique in mind? Share your vision with us and we will craft a bespoke experience just for you.</p>
+        <span class="occasion-price">Custom Pricing</span>
+        <a href="#occasions-form" class="btn btn-outline occasion-btn">Inquire Now</a>
+      </div>
+    </div>
+
+    <!-- Inquiry Form -->
+    <div class="occasions-form-wrapper" id="occasions-form">
+      <h3 class="occasions-form-heading">Send an Inquiry</h3>
+      <form id="occasionsForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="occ-name">Full Name</label>
+            <input type="text" id="occ-name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="occ-occasion">Occasion</label>
+            <select id="occ-occasion" required>
+              <option value="">Select Occasion</option>
+              <option value="Family Dinner">Family Dinner</option>
+              <option value="Couple Dinner">Couple Dinner</option>
+              <option value="Birthday Celebration">Birthday Celebration</option>
+              <option value="Anniversary Celebration">Anniversary Celebration</option>
+              <option value="Corporate Dining">Corporate Dining</option>
+              <option value="Other Occasions">Other Occasions</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="occ-date">Preferred Date</label>
+            <input type="date" id="occ-date" required>
+          </div>
+          <div class="form-group">
+            <label for="occ-guests">Number of Guests</label>
+            <select id="occ-guests" required>
+              <option value="">Select guests</option>
+              <option value="2">2 Guests</option>
+              <option value="3-5">3–5 Guests</option>
+              <option value="6-10">6–10 Guests</option>
+              <option value="11-20">11–20 Guests</option>
+              <option value="20+">20+ Guests</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group full-width">
+          <label for="occ-requests">Special Requests</label>
+          <textarea id="occ-requests" rows="4" placeholder="Tell us about your vision, dietary requirements, or any special arrangements..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Submit Inquiry</button>
+        <p id="occ-msg" class="form-note" style="display:none;"></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
   <!-- Reviews Section -->
   <section class="reviews-section" id="reviews">
     <div class="container">
@@ -532,6 +640,7 @@
           <a href="#home">Home</a>
           <a href="#menu">Menu</a>
           <a href="#reservation">Reservations</a>
+          <a href="#occasions">Occasions</a>
           <a href="#reviews">Reviews</a>
           <a href="#location">Location</a>
         </div>

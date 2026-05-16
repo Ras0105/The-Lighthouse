@@ -422,18 +422,61 @@ if (reviewForm) {
   });
 }
 
+// ── Special Occasions Form ────────────────────────────────────────────────
+const occasionsForm = document.getElementById('occasionsForm');
+const occMsg = document.getElementById('occ-msg');
+
+if (occasionsForm) {
+  // Set min date
+  const occDate = document.getElementById('occ-date');
+  if (occDate) {
+    occDate.setAttribute('min', new Date().toISOString().split('T')[0]);
+  }
+
+  occasionsForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const inquiry = {
+      id: Date.now(),
+      name: document.getElementById('occ-name').value.trim(),
+      occasion: document.getElementById('occ-occasion').value,
+      date: document.getElementById('occ-date').value,
+      guests: document.getElementById('occ-guests').value,
+      requests: document.getElementById('occ-requests').value.trim(),
+    };
+
+    // Save to localStorage
+    const existing = JSON.parse(localStorage.getItem('lighthouse_occasions') || '[]');
+    existing.push(inquiry);
+    localStorage.setItem('lighthouse_occasions', JSON.stringify(existing));
+
+    // Success feedback
+    const submitBtn = occasionsForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Inquiry Submitted!';
+    submitBtn.style.backgroundColor = '#4a9c6a';
+    submitBtn.disabled = true;
+
+    occMsg.textContent = 'Thank you! We will get back to you within 24 hours.';
+    occMsg.style.color = '#4a9c6a';
+    occMsg.style.display = 'block';
+
+    occasionsForm.reset();
+
+    setTimeout(() => {
+      submitBtn.textContent = originalText;
+      submitBtn.style.backgroundColor = '';
+      submitBtn.disabled = false;
+      occMsg.style.display = 'none';
+    }, 3000);
+  });
+}
+
 // Init
 renderReviews();
 //BackToTop
 const backToTopBtn = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 200) {
-    backToTopBtn.style.display = "block";
-  } else {
-    backToTopBtn.style.display = "none";
-  }
-});
 
 // Show/hide on scroll
 window.addEventListener("scroll", () => {
