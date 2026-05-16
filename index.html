@@ -29,6 +29,7 @@
         <li><a href="#about" class="nav-link" data-section="about">About</a></li>
         <li><a href="#menu" class="nav-link" data-section="menu">Menu</a></li>
         <li><a href="#reservation" class="nav-link" data-section="reservation">Reservations</a></li>
+        <li><a href="#reviews" class="nav-link" data-section="reviews">Reviews</a></li>
         <li><a href="#location" class="nav-link" data-section="location">Location</a></li>
       </ul>
       <a href="#reservation" class="nav-cta">Book a Table</a>
@@ -395,7 +396,50 @@
               placeholder="Dietary restrictions, special occasions, seating preferences..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Request Reservation</button>
-          <p class="form-note">You will receive a confirmation email within few hours.</p>
+          <p class="form-note">You will receive a confirmation email within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Guest Experiences</span>
+        <h2 class="section-title">Customer Reviews</h2>
+      </div>
+
+      <!-- Reviews display -->
+      <div class="reviews-grid" id="reviews-grid"></div>
+
+      <!-- Submit form -->
+      <div class="review-form-wrapper">
+        <h3 class="review-form-heading">Share Your Experience</h3>
+        <form id="review-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="review-name">Your Name</label>
+              <input type="text" id="review-name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label>Rating</label>
+              <div class="star-input" id="star-input">
+                <button type="button" class="star-btn" data-value="1">&#9733;</button>
+                <button type="button" class="star-btn" data-value="2">&#9733;</button>
+                <button type="button" class="star-btn" data-value="3">&#9733;</button>
+                <button type="button" class="star-btn" data-value="4">&#9733;</button>
+                <button type="button" class="star-btn" data-value="5">&#9733;</button>
+              </div>
+              <input type="hidden" id="review-rating" value="0">
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label for="review-text">Your Review</label>
+            <textarea id="review-text" rows="4" placeholder="Tell us about your visit..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Submit Review</button>
+          <p id="review-msg" class="form-note" style="display:none;"></p>
         </form>
       </div>
     </div>
@@ -445,19 +489,19 @@
             <p><strong>Email:</strong> reservations@thelighthouse.com</p>
           </div>
           <div class="social-links">
-            <a href="#" class="social-link" aria-label="Instagram">
+            <a href="https://www.instagram.com"target="_blank" class="social-link" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
-            <a href="#" class="social-link" aria-label="Facebook">
+            <a href="https://www.facebook.com" target="_blank"class="social-link" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
-            <a href="#" class="social-link" aria-label="Twitter">
+            <a href="https://x.com" target="_blank" class="social-link" aria-label="Twitter">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path
                   d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
@@ -488,6 +532,7 @@
           <a href="#home">Home</a>
           <a href="#menu">Menu</a>
           <a href="#reservation">Reservations</a>
+          <a href="#reviews">Reviews</a>
           <a href="#location">Location</a>
         </div>
         <div class="footer-copy">
@@ -497,7 +542,7 @@
     </div>
   </footer> 
 
-  <button id="backToTop">BACK TO TOP</button>
+<button id="backToTop">BACK TO TOP ▲</button>
    
   <script src="script.js"></script> 
 
