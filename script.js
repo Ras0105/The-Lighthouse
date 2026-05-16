@@ -424,16 +424,31 @@ if (reviewForm) {
 
 // Init
 renderReviews();
+
+// ── Gallery Swiper ────────────────────────────────────────────────────────
+const gallerySwiper = new Swiper('.gallery-swiper', {
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 0,
+  speed: 600,
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+
 //BackToTop
 const backToTopBtn = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 200) {
-    backToTopBtn.style.display = "block";
-  } else {
-    backToTopBtn.style.display = "none";
-  }
-});
 
 // Show/hide on scroll
 window.addEventListener("scroll", () => {
