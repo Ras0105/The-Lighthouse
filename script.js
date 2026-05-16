@@ -424,6 +424,128 @@ if (reviewForm) {
 
 // Init
 renderReviews();
+
+// ── Build Your Meal ───────────────────────────────────
+
+(function () {
+  const overlay      = document.getElementById('buildMealOverlay');
+  const openBtn      = document.getElementById('buildMealOpen');
+  const closeBtn     = document.getElementById('buildMealClose');
+  const totalEl      = document.getElementById('bymTotal');
+  const selectionsEl = document.getElementById('bymSelections');
+  const reserveBtn   = document.getElementById('bymReserve');
+
+  if (!overlay || !openBtn) return;
+
+  // One selection per course
+  const selection = { starter: null, main: null, dessert: null, drink: null };
+
+  // Open
+  function openModal() {
+    overlay.classList.add('active');
+    overlay.removeAttribute('aria-hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close
+  function closeModal() {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  // Click outside modal to close
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Escape key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+  });
+
+  // Item selection
+  document.querySelectorAll('.bym-items').forEach(group => {
+    const course = group.dataset.course;
+
+    group.querySelectorAll('.bym-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const name  = item.dataset.name;
+        const price = parseInt(item.dataset.price, 10);
+
+        // Click same item again = deselect
+        if (selection[course] && selection[course].name === name) {
+          item.classList.remove('selected');
+          selection[course] = null;
+        } else {
+          // Deselect previous in this course
+          group.querySelectorAll('.bym-item').forEach(i => i.classList.remove('selected'));
+          item.classList.add('selected');
+          selection[course] = { name, price };
+        }
+
+        updateSummary();
+      });
+    });
+  });
+
+  // Update summary bar
+  function updateSummary() {
+    const entries = Object.entries(selection).filter(([, v]) => v !== null);
+    const total   = entries.reduce((sum, [, v]) => sum + v.price, 0);
+
+    // Tags
+    if (entries.length === 0) {
+      selectionsEl.innerHTML = '<span class="bym-summary-empty">No items selected yet.</span>';
+    } else {
+      selectionsEl.innerHTML = entries.map(([course, v]) =>
+        `<span class="bym-selection-tag">${courseLabel(course)}: ${v.name} · Rs.${v.price}</span>`
+      ).join('');
+    }
+
+    // Total
+    totalEl.textContent = `Rs.${total}`;
+
+    // Enable reserve button only if at least one item picked
+    reserveBtn.disabled = entries.length === 0;
+  }
+
+  function courseLabel(course) {
+    return { starter: 'Starter', main: 'Main', dessert: 'Dessert', drink: 'Drink' }[course] || course;
+  }
+
+  // "Reserve with This Meal" — autofill Special Requests + scroll to form
+  reserveBtn.addEventListener('click', () => {
+    const entries = Object.entries(selection).filter(([, v]) => v !== null);
+    if (entries.length === 0) return;
+
+    const total    = entries.reduce((sum, [, v]) => sum + v.price, 0);
+    const mealText = entries.map(([course, v]) => `${courseLabel(course)}: ${v.name}`).join(' | ');
+
+    const requestsField = document.getElementById('requests');
+    if (requestsField) {
+      requestsField.value = `[My Meal] ${mealText} — Total: Rs.${total}`;
+      requestsField.style.borderColor = 'var(--color-primary)';
+      setTimeout(() => { requestsField.style.borderColor = ''; }, 2000);
+    }
+
+    closeModal();
+
+    // Smooth scroll to reservation section
+    const reservationSection = document.getElementById('reservation');
+    if (reservationSection) {
+      window.scrollTo({
+        top: reservationSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+
+})();
+
 //BackToTop
 const backToTopBtn = document.getElementById("backToTop");
 

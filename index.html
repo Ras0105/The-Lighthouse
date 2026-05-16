@@ -97,6 +97,13 @@
         <button class="menu-tab" data-tab="drinks">Drinks</button>
       </div>
 
+      <!-- Build Your Meal CTA -->
+      <div class="build-meal-cta">
+        <button class="btn btn-outline build-meal-btn" id="buildMealOpen">
+          + Build Your Meal
+        </button>
+      </div>
+
       <!-- Menu Content -->
       <div class="menu-content">
         <!-- Breakfast -->
@@ -519,7 +526,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -543,7 +550,148 @@
   </footer> 
 
 <button id="backToTop">BACK TO TOP ▲</button>
-   
+  <!-- Build Your Meal Modal -->
+<div class="bym-overlay" id="buildMealOverlay" aria-hidden="true">
+  <div class="bym-modal" role="dialog" aria-modal="true" aria-labelledby="bymTitle">
+
+    <!-- Close Button -->
+    <button class="bym-close" id="buildMealClose" aria-label="Close">✕</button>
+
+    <!-- Header -->
+    <div class="bym-header">
+      <span class="section-label">Curate Your Evening</span>
+      <h2 id="bymTitle">Build Your Meal</h2>
+      <p class="bym-subtitle">Select one item per course — your total updates in real time.</p>
+    </div>
+
+    <!-- Courses -->
+    <div class="bym-courses">
+
+      <!-- Starter -->
+      <div class="bym-course">
+        <h3 class="bym-course-title">I — Starter</h3>
+        <div class="bym-items" data-course="starter">
+          <div class="bym-item" data-name="Eggs Benedict Royale" data-price="24">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Eggs Benedict Royale</span>
+              <span class="bym-item-desc">Poached eggs, smoked salmon, hollandaise</span>
+            </div>
+            <span class="bym-item-price">Rs.24</span>
+          </div>
+          <div class="bym-item" data-name="Avocado Toast" data-price="18">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Avocado Toast</span>
+              <span class="bym-item-desc">Sourdough, heirloom tomatoes, microgreens</span>
+            </div>
+            <span class="bym-item-price">Rs.18</span>
+          </div>
+          <div class="bym-item" data-name="Shakshuka" data-price="21">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Shakshuka</span>
+              <span class="bym-item-desc">Spiced tomato sauce, baked eggs, feta</span>
+            </div>
+            <span class="bym-item-price">Rs.21</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main -->
+      <div class="bym-course">
+        <h3 class="bym-course-title">II — Main Course</h3>
+        <div class="bym-items" data-course="main">
+          <div class="bym-item" data-name="Filet Mignon" data-price="58">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Filet Mignon</span>
+              <span class="bym-item-desc">Herb butter, truffle mashed potatoes</span>
+            </div>
+            <span class="bym-item-price">Rs.58</span>
+          </div>
+          <div class="bym-item" data-name="Chilean Sea Bass" data-price="52">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Chilean Sea Bass</span>
+              <span class="bym-item-desc">Miso glaze, bok choy, shiitake mushrooms</span>
+            </div>
+            <span class="bym-item-price">Rs.52</span>
+          </div>
+          <div class="bym-item" data-name="Mushroom Risotto" data-price="32">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Mushroom Risotto</span>
+              <span class="bym-item-desc">Wild mushrooms, parmesan, truffle oil</span>
+            </div>
+            <span class="bym-item-price">Rs.32</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dessert -->
+      <div class="bym-course">
+        <h3 class="bym-course-title">III — Dessert</h3>
+        <div class="bym-items" data-course="dessert">
+          <div class="bym-item" data-name="Belgian Waffles" data-price="17">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Belgian Waffles</span>
+              <span class="bym-item-desc">Caramelized bananas, bourbon vanilla cream</span>
+            </div>
+            <span class="bym-item-price">Rs.17</span>
+          </div>
+          <div class="bym-item" data-name="Crème Brûlée" data-price="14">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Crème Brûlée</span>
+              <span class="bym-item-desc">Vanilla custard, caramelised sugar crust</span>
+            </div>
+            <span class="bym-item-price">Rs.14</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drink -->
+      <div class="bym-course">
+        <h3 class="bym-course-title">IV — Drink</h3>
+        <div class="bym-items" data-course="drink">
+          <div class="bym-item" data-name="Lighthouse Old Fashioned" data-price="18">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Lighthouse Old Fashioned</span>
+              <span class="bym-item-desc">Bourbon, demerara, angostura, orange peel</span>
+            </div>
+            <span class="bym-item-price">Rs.18</span>
+          </div>
+          <div class="bym-item" data-name="Espresso Martini" data-price="17">
+            <div class="bym-item-info">
+              <span class="bym-item-name">Espresso Martini</span>
+              <span class="bym-item-desc">Vodka, kahlua, fresh espresso, vanilla</span>
+            </div>
+            <span class="bym-item-price">Rs.17</span>
+          </div>
+          <div class="bym-item" data-name="French 75" data-price="16">
+            <div class="bym-item-info">
+              <span class="bym-item-name">French 75</span>
+              <span class="bym-item-desc">Gin, champagne, lemon, simple syrup</span>
+            </div>
+            <span class="bym-item-price">Rs.16</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary Bar -->
+    <div class="bym-summary">
+      <div class="bym-summary-selections" id="bymSelections">
+        <span class="bym-summary-empty">No items selected yet.</span>
+      </div>
+      <div class="bym-summary-footer">
+        <div class="bym-total-wrap">
+          <span class="bym-total-label">Estimated Total</span>
+          <span class="bym-total-amount" id="bymTotal">Rs.0</span>
+        </div>
+        <button class="btn btn-primary bym-reserve-btn" id="bymReserve" disabled>
+          Reserve with This Meal
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
   <script src="script.js"></script> 
 
 </body>
