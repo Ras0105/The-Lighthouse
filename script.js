@@ -326,12 +326,27 @@ function saveReviews(reviews) {
 }
 
 // Permanent review — always shows first, cannot be removed
-const pinnedReview = {
-  name: 'Rasshi Srivastav',
-  rating: 5,
-  text: 'Absolutely loved the food and ambience! Every dish was crafted with such care and the atmosphere was warm and elegant. A truly memorable dining experience — will definitely be coming back!',
-  date: '14 May 2026'
-};
+// Permanent reviews — always show, cannot be removed
+const pinnedReviews = [
+  {
+    name: 'Anushka Sarkar',
+    rating: 5,
+    text: 'An extraordinary evening from start to finish! The Chilean Sea Bass was cooked to perfection and the service was impeccable. The ambience felt intimate yet grand — exactly what fine dining should be.',
+    date: '10 May 2026'
+  },
+  {
+    name: 'Rasshi Srivastav',
+    rating: 5,
+    text: 'Absolutely loved the food and ambience! Every dish was crafted with such care and the atmosphere was warm and elegant. A truly memorable dining experience — will definitely be coming back!',
+    date: '10 May 2026'
+  },
+  {
+    name: 'Aditya',
+    rating: 4,
+    text: 'The Mushroom Risotto was rich and beautifully presented. Loved the warm lighting and elegant decor. Our server was attentive without being intrusive. Will absolutely return for a special occasion!',
+    date: '12 May 2026'
+  }
+];
 
 function renderReviews() {
   const grid = document.getElementById('reviews-grid');
@@ -340,7 +355,7 @@ function renderReviews() {
   const userReviews = getReviews();
 
   // Pinned review always at top, user reviews below
-  const allReviews = [pinnedReview, ...userReviews];
+  const allReviews = [...pinnedReviews, ...userReviews];
 
   grid.innerHTML = allReviews.map(r => `
     <div class="review-card">
